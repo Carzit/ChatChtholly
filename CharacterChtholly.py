@@ -362,9 +362,26 @@ def send_message(driver, message: str):
 
 def get_response(driver):
     element = driver.find_element(By.XPATH, '//div[@style="overflow-wrap: break-word;"]')
-    print('Chtholly:')
-    print(element.text)
     return element.text
+
+def wrap(string, max_width):
+    result1 = [string[i:i + max_width] for i in range(0, len(string), max_width)]
+    result = '\n'.join(result1)
+    return result
+
+def flat(string=''):
+    result1 = string.replace('\n', '')
+    result = result1.replace(' ', '')
+    return result
+
+def word_process(string=''):
+    result = string.replace('Chtholly', 'クトリ')
+    result = result.replace('Willem', 'ヴィレム')
+    result = result.replace('William', 'ヴィレム')
+    result = result.replace('nota', 'ノタ')
+    result = result.replace('Nota', 'ノタ')
+    result = result.replace('Seniorious', 'セニオリス')
+    return result
 
 def wait_chth(driver):
     wait = WebDriverWait(driver, 120, 0.5)
@@ -396,12 +413,17 @@ if __name__ == "__main__":
     # GoogleTrans, god bless you.
     translator = Translator()
     print('Chtholly is ready! Now you can chat with her.')
+
     while True:
         send_message(driver=driver, message=input('You:\n'))
         wait_chth(driver=driver)
-        trans = translator.translate(get_response(driver=driver), src='en', dest='ja')
+        print('Chtholly:')
+        print(get_response(driver=driver))
+        trans = translator.translate(get_response(driver=driver), dest='ja')
         trans_text = trans.text
-        resp = str(trans_text).replace('Chtholly', 'クトリ')
-        print(resp)
-        generateSound("[JA]" + resp + "[JA]")
+        jaresp = word_process(str(trans_text))
+        print(jaresp)
+        jaresp = flat(jaresp)
+        print('Voice Generating...')
+        generateSound("[JA]" + jaresp + "[JA]")
         PlaySound(r'.\output.wav', flags=1)
