@@ -35,13 +35,17 @@ VITS模型下载：请根据model文件夹下MODEL DOWNLOAD.md文件中的地址
 
 4.1:如果您想使用语音识别功能（您可以直接语音输入），可以使用CharacterChthollyVoice.py这个程序。您需要申请腾讯云的API，并将程序第69-70行的TC_ID与TC_KEY赋上您的语音识别api的ID与KEY值。
 
-申请操作如下：
-https://cloud.tencent.com/ 打开腾讯云网站，点击右上角注册账号。
-注册后在 https://cloud.tencent.com/product/asr 打开腾讯云ASR服务，点击立即使用，选择新用户专享资源包，开通相关服务。
-开通服务后，在https://console.cloud.tencent.com/cam/capi 打开腾讯云控制台API密钥管理页面，选择新建密钥。
-创建成功后即可获取该密钥相应的ID与KEY值。
+申请操作如下： 
 
-（我尚在优化这一项目）
+https://cloud.tencent.com/ 打开腾讯云网站，点击右上角注册账号。 
+ 
+注册后在 https://cloud.tencent.com/product/asr 打开腾讯云ASR服务，点击立即使用，选择新用户专享资源包，开通相关服务。  
+ 
+开通服务后，在https://console.cloud.tencent.com/cam/capi 打开腾讯云控制台API密钥管理页面，选择新建密钥。 
+ 
+创建成功后即可获取该密钥相应的ID与KEY值。 
+ 
+（我尚在优化这一项目） 
 
 ## 鸣谢
 - [MoeGoe_GUI]https://github.com/CjangCjengh/MoeGoe_GUI
