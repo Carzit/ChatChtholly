@@ -66,6 +66,9 @@ import soundfile
 #===============================================================================================================
 
 speakerID = 0
+TCId =
+TCKey =
+
 
 def sound_record():
     # 设置录音参数
@@ -75,7 +78,7 @@ def sound_record():
     RATE = 48000
     FRAME_SIZE = int(RATE * FRAME_DURATION_MS / 1000)
     RECORD_SECONDS = 10  # 最多可录音几秒
-    SILENCE_DURATION = 1  # 说完后几秒停止录音
+    SILENCE_DURATION = 3  # 说完后几秒停止录音
 
     # 初始化pyaudio，webrtcvad
     vad = webrtcvad.Vad(3)
@@ -132,8 +135,8 @@ def sound_record():
     return wav_base64
 
 
-def asr_request(wav_base64):
-    cred = credential.Credential(TC_ID, TC_KEY)
+def asr_request(wav_base64, tc_id, tc_key):
+    cred = credential.Credential(tc_id, tc_key)
     # 实例化一个http选项，可选的，没有特殊需求可以跳过
     httpProfile = HttpProfile()
     httpProfile.endpoint = "asr.tencentcloudapi.com"
@@ -543,7 +546,7 @@ if __name__ == "__main__":
     print('Chtholly is ready! Now you can chat with her.')
 
     while True:
-        user_words = asr_request(sound_record())
+        user_words = asr_request(sound_record(), TCId, TCKey)
         if user_words != None:
             send_message(driver=driver, message=user_words)
             wait_chth(driver=driver)
