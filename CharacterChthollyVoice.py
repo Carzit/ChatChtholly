@@ -480,7 +480,7 @@ def send_message(driver, message: str):
 #<p node="[object Object]" style="margin-bottom: 0.5rem;">You are strong, you are loved and you are not alone.</p></div>
 
 def get_response(driver):
-    element = driver.find_element(By.XPATH, '//div[@style="overflow-wrap: break-word;"]')
+    element = driver.find_element(By.XPATH, '(//div[@style="overflow-wrap: break-word;"])[last()-1]')
     return element.text
 
 def wrap(string, max_width):
