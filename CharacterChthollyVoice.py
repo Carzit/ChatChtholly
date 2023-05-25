@@ -78,7 +78,7 @@ def sound_record():
     RATE = 48000
     FRAME_SIZE = int(RATE * FRAME_DURATION_MS / 1000)
     RECORD_SECONDS = 10  # 最多可录音几秒
-    SILENCE_DURATION = 3  # 说完后几秒停止录音
+    SILENCE_DURATION = 1  # 说完后几秒停止录音
 
     # 初始化pyaudio，webrtcvad
     vad = webrtcvad.Vad(3)
