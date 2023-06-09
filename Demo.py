@@ -346,7 +346,7 @@ if __name__ == "__main__":
     client = PyCAI('33a5650565d3ed003cd3af81e6be01efdd523022')
     # GoogleTrans, god bless you.
     translator = Translator()
-    print('Chtholly is ready! Now you can chat with her.'\n)
+    print('Chtholly is ready! Now you can chat with her.\n')
     
     if True:
         # there used to be a loop
