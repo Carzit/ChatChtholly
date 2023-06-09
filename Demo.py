@@ -2,16 +2,13 @@ import commons
 import sys
 import re
 import utils
-import IPython
 
-from IPython.display import Audio
 from googletrans import Translator
 from scipy.io.wavfile import write
 from mel_processing import spectrogram_torch
 from text import text_to_sequence
 from models import SynthesizerTrn
 from torch import no_grad, LongTensor
-from playsound import playsound
 from characterai import PyCAI
 
 speakerID = 0
@@ -368,4 +365,3 @@ if __name__ == "__main__":
         jaresp = flat(jaresp)
         print('Voice Generating...')
         generateSound("[JA]" + jaresp + "[JA]")
-        display(Audio('output.wav'))
