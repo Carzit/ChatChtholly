@@ -27,6 +27,7 @@ package you may need:
 import commons
 import sys
 import re
+import os
 
 import utils
 
@@ -35,18 +36,9 @@ from scipy.io.wavfile import write
 from mel_processing import spectrogram_torch
 from text import text_to_sequence
 from models import SynthesizerTrn
-
 from torch import no_grad, LongTensor
-from winsound import PlaySound
 from characterai import PyCAI
 
-
-#===============================================================================================================
-# 在cmd下,在chrome所在文件夹位置，执行：
-# chrome.exe --remote-debugging-port=9222
-# 如此打开chrome后 ,手动访问https://beta.character.ai/chat?char=LMri6f9uZj2p17QoKDiEvDw1wAk2AUoi1C02V6HHU8E，建议登录。
-# 接下来运行程序即可，注意不要关chrome和cmd
-#===============================================================================================================
 
 speakerID = 0
 
@@ -122,9 +114,9 @@ def generateSound(inputString):
         escape = False
 
     # model = input('Path of a VITS model: ')
-    model = r".\model\Chtholly.pth"
+    model = r"./model/Chtholly.pth"
     # config = input('Path of a config file: ')
-    config = r".\model\config.json"
+    config = r"./model/config.json"
 
     hps_ms = utils.get_hparams_from_file(config)
     n_speakers = hps_ms.data.n_speakers if 'n_speakers' in hps_ms.data.keys() else 0
@@ -401,4 +393,4 @@ if __name__ == "__main__":
         jaresp = flat(jaresp)
         print('Voice Generating...')
         generateSound("[JA]" + jaresp + "[JA]")
-        PlaySound(r'.\output.wav', flags=1)
+        os.system('output.wav')
