@@ -347,8 +347,10 @@ if __name__ == "__main__":
     # GoogleTrans, god bless you.
     translator = Translator()
     print('Chtholly is ready! Now you can chat with her.')
-
-    while True:
+    
+    if True:
+        # there used to be a loop
+        
         message = input('You: \n')
         print('Text Generating...')
         data = client.chat.send_message(char='LMri6f9uZj2p17QoKDiEvDw1wAk2AUoi1C02V6HHU8E',
