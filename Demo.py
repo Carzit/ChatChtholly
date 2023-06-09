@@ -85,9 +85,9 @@ def generateSound(inputString):
         escape = False
 
     # model = input('Path of a VITS model: ')
-    model = r".\model\Chtholly.pth"
+    model = r"./model/Chtholly.pth"
     # config = input('Path of a config file: ')
-    config = r".\model\config.json"
+    config = r"./model/config.json"
 
     hps_ms = utils.get_hparams_from_file(config)
     n_speakers = hps_ms.data.n_speakers if 'n_speakers' in hps_ms.data.keys() else 0
