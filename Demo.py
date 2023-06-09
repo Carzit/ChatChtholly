@@ -346,13 +346,13 @@ if __name__ == "__main__":
     client = PyCAI('33a5650565d3ed003cd3af81e6be01efdd523022')
     # GoogleTrans, god bless you.
     translator = Translator()
-    print('Chtholly is ready! Now you can chat with her.')
+    print('Chtholly is ready! Now you can chat with her.'\n)
     
     if True:
         # there used to be a loop
         
         message = input('You: \n')
-        print('Text Generating...')
+        print('\nText Generating...\n')
         data = client.chat.send_message(char='LMri6f9uZj2p17QoKDiEvDw1wAk2AUoi1C02V6HHU8E',
                                         token='33a5650565d3ed003cd3af81e6be01efdd523022',
                                         message=message,
@@ -365,5 +365,5 @@ if __name__ == "__main__":
         jaresp = word_process(str(trans_text))
         print(jaresp)
         jaresp = flat(jaresp)
-        print('Voice Generating...')
+        print('\nVoice Generating...')
         generateSound("[JA]" + jaresp + "[JA]")
