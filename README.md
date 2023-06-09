@@ -1,5 +1,5 @@
 # 简易黄金妖精召唤术 Simple Invocation of Repurakaan
-
+[![ChatChthollyDemo](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github.com/Carzit/ChatChtholly/blob/main/ChatChthollyDemo.ipynb)  
 ### VITS模型下载：
 您可通过Release下载: https://github.com/Carzit/ChatChtholly/releases/tag/MODEL  
 或根据model文件夹下MODEL DOWNLOAD.md文件中的网盘地址: https://pan.baidu.com/s/1MtAm3TpjhqrmzJmS7eqIoQ?pwd=suka  
