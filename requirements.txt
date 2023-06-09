@@ -4,7 +4,7 @@ numpy
 scipy
 torch
 unidecode
-openjtalk>=0.3.0.dev2
+openjtalk==0.3.0.dev2
 jamo
 pypinyin
 jieba
@@ -19,5 +19,5 @@ opencc
 pyChatGPT
 vosk
 sounddevice
-pywin
-googletrans
+googletrans==3.1.0a0
+characterai
