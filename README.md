@@ -1,4 +1,5 @@
 # 简易黄金妖精召唤术 Simple Invocation of Repurakaan
+
 [![Open Demo](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Carzit/ChatChtholly/blob/main/ChatChthollyDemo.ipynb) 
 
 ### VITS模型下载：
@@ -29,8 +30,8 @@
 2.1:在cmd下,在chrome所在文件夹位置，执行：chrome.exe --remote-debugging-port=9222  
 如此打开chrome后 ,手动访问https://beta.character.ai/chat?char=LMri6f9uZj2p17QoKDiEvDw1wAk2AUoi1C02V6HHU8E
 
-*建议登录账号（否则有会话限制）  
-*注意不要关闭chrome和cmd  
+* 建议登录账号（否则有会话限制）  
+* 注意不要最小化chrome窗口 
 
 2.2:运行CharacterChtholly.py  
 3.1:开始和Chtholly聊天叭  
@@ -46,7 +47,7 @@ https://cloud.tencent.com/ 打开腾讯云网站，点击右上角注册账号�
  
 ### （我尚在优化这一项目） 
 
-### CharacterChtholly衍生 
+## CharacterChtholly衍生 
 CharacterChthollyGUI
  实现了CharacterChtholly的GUI呈现  
 
@@ -54,7 +55,7 @@ CharacterChthollyVoice
  实现了语音输入的CharacterChtholly  
 
 VtuberChtholly
- 实现了能回复bilibili直播间弹幕的CharacterChtholly  
+ 实现了能排队回复bilibili直播间弹幕的CharacterChtholly  
 
 ## 鸣谢
 - [MoeGoe_GUI]https://github.com/CjangCjengh/MoeGoe_GUI
