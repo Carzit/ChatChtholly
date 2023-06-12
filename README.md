@@ -56,6 +56,15 @@ CharacterChthollyVoice
 
 VtuberChtholly
  实现了能排队回复bilibili直播间弹幕的CharacterChtholly  
+ 
+## 演示视频
+v1.0 https://www.bilibili.com/video/BV1bh411V7B2/?share_source=copy_web&vd_source=5e5d862426d097e4b9541d7dbae0c834  
+
+v1.2 https://www.bilibili.com/video/BV1xc411W7z1/?share_source=copy_web&vd_source=5e5d862426d097e4b9541d7dbae0c834  
+
+v2.1 https://www.bilibili.com/video/BV1Zs4y1M7sD/?share_source=copy_web&vd_source=5e5d862426d097e4b9541d7dbae0c834
+
+
 
 ## 鸣谢
 - [MoeGoe_GUI]https://github.com/CjangCjengh/MoeGoe_GUI
