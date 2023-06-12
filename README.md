@@ -46,10 +46,15 @@ https://cloud.tencent.com/ 打开腾讯云网站，点击右上角注册账号�
  
 ### （我尚在优化这一项目） 
 
-### CharacterChtholly衍生
-CharacterChthollyGUI 实现了CharacterChtholly的GUI呈现
-CharacterChthollyVoice 实现了语音输入的CharacterChtholly
-VtuberChtholly 实现了能回复bilibili直播间弹幕的CharacterChtholly
+### CharacterChtholly衍生 
+CharacterChthollyGUI
+ 实现了CharacterChtholly的GUI呈现  
+
+CharacterChthollyVoice
+ 实现了语音输入的CharacterChtholly  
+
+VtuberChtholly
+ 实现了能回复bilibili直播间弹幕的CharacterChtholly  
 
 ## 鸣谢
 - [MoeGoe_GUI]https://github.com/CjangCjengh/MoeGoe_GUI
