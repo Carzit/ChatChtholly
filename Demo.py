@@ -78,12 +78,12 @@ def get_label(text, label):
     else:
         return False, text
 
+
 def generateSound(inputString):
     if '--escape' in sys.argv:
         escape = True
     else:
         escape = False
-
     # model = input('Path of a VITS model: ')
     model = r"./model/Chtholly.pth"
     # config = input('Path of a config file: ')
@@ -132,181 +132,36 @@ def generateSound(inputString):
 
     if n_symbols != 0:
         if not emotion_embedding:
-            # while True:
-            if (1 == 1):
-                # choice = input('TTS or VC? (t/v):')
-                choice = 't'
-                if choice == 't':
-                    # text = input('Text to read: ')
-                    text = inputString
-                    if text == '[ADVANCED]':
-                        # text = input('Raw text:')
-                        text = "我不会说"
-                        # print('Cleaned text is:')
-                        # ex_print(_clean_text(
-                        #    text, hps_ms.data.text_cleaners), escape)
-                        # continue
+            # choice = input('TTS or VC? (t/v):')
+            # choice = 't'
+            # text = input('Text to read: ')
+            text = inputString
+            length_scale, text = get_label_value(
+                text, 'LENGTH', 1, 'length scale')
+            noise_scale, text = get_label_value(
+                text, 'NOISE', 0.667, 'noise scale')
+            noise_scale_w, text = get_label_value(
+                text, 'NOISEW', 0.8, 'deviation of noise')
+            cleaned, text = get_label(text, 'CLEANED')
 
-                    length_scale, text = get_label_value(
-                        text, 'LENGTH', 1, 'length scale')
-                    noise_scale, text = get_label_value(
-                        text, 'NOISE', 0.667, 'noise scale')
-                    noise_scale_w, text = get_label_value(
-                        text, 'NOISEW', 0.8, 'deviation of noise')
-                    cleaned, text = get_label(text, 'CLEANED')
+            stn_tst = get_text(text, hps_ms, cleaned=cleaned)
 
-                    stn_tst = get_text(text, hps_ms, cleaned=cleaned)
+            # print_speakers(speakers, escape)
+            # speaker_id = get_speaker_id('Speaker ID: ')
+            speaker_id = speakerID
+            # out_path = input('Path to save: ')
+            out_path = "output.wav"
 
-                    # print_speakers(speakers, escape)
-                    # speaker_id = get_speaker_id('Speaker ID: ')
-                    speaker_id = speakerID
-                    # out_path = input('Path to save: ')
-                    out_path = "output.wav"
-
-                    with no_grad():
-                        x_tst = stn_tst.unsqueeze(0)
-                        x_tst_lengths = LongTensor([stn_tst.size(0)])
-                        sid = LongTensor([speaker_id])
-                        audio = net_g_ms.infer(x_tst, x_tst_lengths, sid=sid, noise_scale=noise_scale,
-                                               noise_scale_w=noise_scale_w, length_scale=length_scale)[0][
-                            0, 0].data.cpu().float().numpy()
-
-                elif choice == 'v':
-                    audio, out_path = voice_conversion()
-
-                write(out_path, hps_ms.data.sampling_rate, audio)
-                print('Successfully saved!\n')
-                # ask_if_continue()
-        else:
-            import os
-            import librosa
-            import numpy as np
-            from torch import FloatTensor
-            import audonnx
-            w2v2_folder = input('Path of a w2v2 dimensional emotion model: ')
-            w2v2_model = audonnx.load(os.path.dirname(w2v2_folder))
-            # while True:
-            if (1 == 1):
-                # choice = input('TTS or VC? (t/v):')
-                choice = 't'
-                if choice == 't':
-                    # text = input('Text to read: ')
-                    text = inputString
-                    if text == '[ADVANCED]':
-                        # text = input('Raw text:')
-                        text = "我不会说"
-                        # print('Cleaned text is:')
-                        # ex_print(_clean_text(
-                        #    text, hps_ms.data.text_cleaners), escape)
-                        # continue
-
-                    length_scale, text = get_label_value(
-                        text, 'LENGTH', 1, 'length scale')
-                    noise_scale, text = get_label_value(
-                        text, 'NOISE', 0.667, 'noise scale')
-                    noise_scale_w, text = get_label_value(
-                        text, 'NOISEW', 0.8, 'deviation of noise')
-                    cleaned, text = get_label(text, 'CLEANED')
-
-                    stn_tst = get_text(text, hps_ms, cleaned=cleaned)
-
-                    # print_speakers(speakers, escape)
-                    # speaker_id = get_speaker_id('Speaker ID: ')
-                    speaker_id = speakerID
-
-                    emotion_reference = input('Path of an emotion reference: ')
-                    if emotion_reference.endswith('.npy'):
-                        emotion = np.load(emotion_reference)
-                        emotion = FloatTensor(emotion).unsqueeze(0)
-                    else:
-                        audio16000, sampling_rate = librosa.load(
-                            emotion_reference, sr=16000, mono=True)
-                        emotion = w2v2_model(audio16000, sampling_rate)[
-                            'hidden_states']
-                        emotion_reference = re.sub(
-                            r'\..*$', '', emotion_reference)
-                        np.save(emotion_reference, emotion.squeeze(0))
-                        emotion = FloatTensor(emotion)
-
-                    # out_path = input('Path to save: ')
-                    out_path = "output.wav"
-
-                    with no_grad():
-                        x_tst = stn_tst.unsqueeze(0)
-                        x_tst_lengths = LongTensor([stn_tst.size(0)])
-                        sid = LongTensor([speaker_id])
-                        audio = net_g_ms.infer(x_tst, x_tst_lengths, sid=sid, noise_scale=noise_scale,
-                                               noise_scale_w=noise_scale_w,
-                                               length_scale=length_scale, emotion_embedding=emotion)[0][
-                            0, 0].data.cpu().float().numpy()
-
-                elif choice == 'v':
-                    audio, out_path = voice_conversion()
-
-                write(out_path, hps_ms.data.sampling_rate, audio)
-                print('Successfully saved!')
-                print('')
-                # ask_if_continue()
-    else:
-        model = input('Path of a hubert-soft model: ')
-        from hubert_model import hubert_soft
-        hubert = hubert_soft(model)
-
-        while True:
-            audio_path = input('Path of an audio file to convert:\n')
-
-            if audio_path != '[VC]':
-                import librosa
-                if use_f0:
-                    audio, sampling_rate = librosa.load(
-                        audio_path, sr=hps_ms.data.sampling_rate, mono=True)
-                    audio16000 = librosa.resample(
-                        audio, orig_sr=sampling_rate, target_sr=16000)
-                else:
-                    audio16000, sampling_rate = librosa.load(
-                        audio_path, sr=16000, mono=True)
-
-                # print_speakers(speakers, escape)
-                target_id = get_speaker_id('Target speaker ID: ')
-                out_path = input('Path to save: ')
-                length_scale, out_path = get_label_value(
-                    out_path, 'LENGTH', 1, 'length scale')
-                noise_scale, out_path = get_label_value(
-                    out_path, 'NOISE', 0.1, 'noise scale')
-                noise_scale_w, out_path = get_label_value(
-                    out_path, 'NOISEW', 0.1, 'deviation of noise')
-
-                from torch import inference_mode, FloatTensor
-                import numpy as np
-                with inference_mode():
-                    units = hubert.units(FloatTensor(audio16000).unsqueeze(
-                        0).unsqueeze(0)).squeeze(0).numpy()
-                    if use_f0:
-                        f0_scale, out_path = get_label_value(
-                            out_path, 'F0', 1, 'f0 scale')
-                        f0 = librosa.pyin(audio, sr=sampling_rate,
-                                          fmin=librosa.note_to_hz('C0'),
-                                          fmax=librosa.note_to_hz('C7'),
-                                          frame_length=1780)[0]
-                        target_length = len(units[:, 0])
-                        f0 = np.nan_to_num(np.interp(np.arange(0, len(f0) * target_length, len(f0)) / target_length,
-                                                     np.arange(0, len(f0)), f0)) * f0_scale
-                        units[:, 0] = f0 / 10
-
-                stn_tst = FloatTensor(units)
-                with no_grad():
-                    x_tst = stn_tst.unsqueeze(0)
-                    x_tst_lengths = LongTensor([stn_tst.size(0)])
-                    sid = LongTensor([target_id])
-                    audio = net_g_ms.infer(x_tst, x_tst_lengths, sid=sid, noise_scale=noise_scale,
-                                           noise_scale_w=noise_scale_w, length_scale=length_scale)[0][
-                        0, 0].data.float().numpy()
-
-            else:
-                audio, out_path = voice_conversion()
+            with no_grad():
+                x_tst = stn_tst.unsqueeze(0)
+                x_tst_lengths = LongTensor([stn_tst.size(0)])
+                sid = LongTensor([speaker_id])
+                audio = net_g_ms.infer(x_tst, x_tst_lengths, sid=sid, noise_scale=noise_scale,
+                                       noise_scale_w=noise_scale_w, length_scale=length_scale)[0][
+                    0, 0].data.cpu().float().numpy()
 
             write(out_path, hps_ms.data.sampling_rate, audio)
-            print('Successfully saved!')
+            print('Successfully saved!\n')
             # ask_if_continue()
 
 #<div style="overflow-wrap: break-word;">
@@ -348,9 +203,7 @@ if __name__ == "__main__":
     translator = Translator()
     print('Chtholly is ready! Now you can chat with her.\n')
     
-    if True:
-        # there used to be a loop
-        
+    if True:# there used to be a loop
         message = input('You: \n')
         print('\nText Generating...\n')
         data = client.chat.send_message(char='LMri6f9uZj2p17QoKDiEvDw1wAk2AUoi1C02V6HHU8E',
