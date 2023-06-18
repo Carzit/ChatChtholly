@@ -309,12 +309,14 @@ class MyWindow(QWidget):
 
 
     def check(self):
-        self.edit.clear()
+        
         self.btn.setEnabled(False)
         self.situation.setText('Text Generating...')
         self.situation.repaint()
         self.textthread = TextThread(self.edit.text())
         self.textthread.text_signal.connect(self.my_slot)
+
+        self.edit.clear()
         self.textthread.start()
 
 ############################################################################################
