@@ -51,6 +51,9 @@ https://cloud.tencent.com/ 打开腾讯云网站，点击右上角注册账号�
 CharacterChthollyGUI
  实现了CharacterChtholly的GUI呈现  
 
+Demo_gradio
+ 实现了CharacterChtholly的WebUI呈现  
+
 CharacterChthollyVoice
  实现了语音输入的CharacterChtholly  
 
