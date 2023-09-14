@@ -1,6 +1,8 @@
 # 简易黄金妖精召唤术 Simple Invocation of Repurakaan
 
-[![Open Demo](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Carzit/ChatChtholly/blob/main/ChatChthollyColabDemo.ipynb) 
+### Demo试用：  
+[![Open Demo](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Carzit/ChatChtholly/blob/main/ChatChthollyColabDemo.ipynb)   
+（Characterai库的最近更新导致bug，暂不可用）
 
 ### VITS模型下载：
 您可通过Release下载: https://github.com/Carzit/ChatChtholly/releases/tag/MODEL  
