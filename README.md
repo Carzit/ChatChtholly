@@ -1,4 +1,4 @@
-# 简易黄金妖精召唤术 Simple Invocation of Repurakaan
+# 简易黄金妖精召唤术 Simple Invocation of Leprechaun
 
 ### Demo试用：  
 [![Open Demo](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Carzit/ChatChtholly/blob/main/ChatChthollyColabDemo.ipynb)   
